@@ -1,42 +1,100 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.container {
   text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.title {
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.image-container {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Initial*/
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+/* Waiting */
+.image-container img.waiting {
+  display: block;
+  animation: slowBounce 2s infinite ease-in-out;
+}
+
+@keyframes slowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Dancing */
+.image-container.dance img.dance-frame-1 {
+  display: block;
+  animation: danceSwap1 0.4s infinite step-end;
+}
+
+.image-container.dance img.dance-frame-2 {
+  display: block;
+  animation: danceSwap2 0.4s infinite step-end;
+}
+
+@keyframes danceSwap1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-.card {
-  padding: 2em;
+@keyframes danceSwap2 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+.action-button {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #3700b3;
+}
+
+.action-button:active {
+  background-color: #03dac5;
 }
